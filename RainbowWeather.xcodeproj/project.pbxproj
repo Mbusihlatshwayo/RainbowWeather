@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		136062904FB7643FD4388427 /* Pods_RainbowWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE7BBE6A00E254CBA13A9DD /* Pods_RainbowWeather.framework */; };
 		CC2564301EC234B800EC1167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC25642F1EC234B800EC1167 /* AppDelegate.swift */; };
-		CC2564321EC234B800EC1167 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2564311EC234B800EC1167 /* ViewController.swift */; };
+		CC2564321EC234B800EC1167 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2564311EC234B800EC1167 /* MainViewController.swift */; };
 		CC2564351EC234B800EC1167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2564331EC234B800EC1167 /* Main.storyboard */; };
 		CC2564371EC234B800EC1167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2564361EC234B800EC1167 /* Assets.xcassets */; };
 		CC25643A1EC234B800EC1167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2564381EC234B800EC1167 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E10FE0749A6DD1E65229FD5 /* Pods-RainbowWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowWeather.release.xcconfig"; path = "Pods/Target Support Files/Pods-RainbowWeather/Pods-RainbowWeather.release.xcconfig"; sourceTree = "<group>"; };
+		0EE7BBE6A00E254CBA13A9DD /* Pods_RainbowWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RainbowWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C1A23DC05E6C82B4C80CF8F /* Pods-RainbowWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RainbowWeather/Pods-RainbowWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		CC25642C1EC234B800EC1167 /* RainbowWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainbowWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC25642F1EC234B800EC1167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC2564311EC234B800EC1167 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC2564311EC234B800EC1167 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CC2564341EC234B800EC1167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC2564361EC234B800EC1167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC2564391EC234B800EC1167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136062904FB7643FD4388427 /* Pods_RainbowWeather.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9F49648606E3094E2F69939 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A23DC05E6C82B4C80CF8F /* Pods-RainbowWeather.debug.xcconfig */,
+				0E10FE0749A6DD1E65229FD5 /* Pods-RainbowWeather.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CAA394D161E4B0A23EC99502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EE7BBE6A00E254CBA13A9DD /* Pods_RainbowWeather.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC2564231EC234B700EC1167 = {
 			isa = PBXGroup;
 			children = (
 				CC25642E1EC234B800EC1167 /* RainbowWeather */,
 				CC25642D1EC234B800EC1167 /* Products */,
+				C9F49648606E3094E2F69939 /* Pods */,
+				CAA394D161E4B0A23EC99502 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,54 @@
 		CC25642E1EC234B800EC1167 /* RainbowWeather */ = {
 			isa = PBXGroup;
 			children = (
-				CC25642F1EC234B800EC1167 /* AppDelegate.swift */,
-				CC2564311EC234B800EC1167 /* ViewController.swift */,
-				CC2564331EC234B800EC1167 /* Main.storyboard */,
-				CC2564361EC234B800EC1167 /* Assets.xcassets */,
-				CC2564381EC234B800EC1167 /* LaunchScreen.storyboard */,
-				CC25643B1EC234B800EC1167 /* Info.plist */,
+				CC2564451EC235A500EC1167 /* Settings */,
+				CC2564441EC2359300EC1167 /* Supporting Files */,
+				CC2564431EC2355F00EC1167 /* Model */,
+				CC2564421EC2355B00EC1167 /* View */,
+				CC2564411EC2355800EC1167 /* Controller */,
 			);
 			path = RainbowWeather;
+			sourceTree = "<group>";
+		};
+		CC2564411EC2355800EC1167 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC2564311EC234B800EC1167 /* MainViewController.swift */,
+				CC25642F1EC234B800EC1167 /* AppDelegate.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CC2564421EC2355B00EC1167 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC2564331EC234B800EC1167 /* Main.storyboard */,
+				CC2564381EC234B800EC1167 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CC2564431EC2355F00EC1167 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC2564441EC2359300EC1167 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CC2564361EC234B800EC1167 /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC2564451EC235A500EC1167 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CC25643B1EC234B800EC1167 /* Info.plist */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC25643E1EC234B800EC1167 /* Build configuration list for PBXNativeTarget "RainbowWeather" */;
 			buildPhases = (
+				81916EF95039F570511E8D2F /* [CP] Check Pods Manifest.lock */,
 				CC2564281EC234B700EC1167 /* Sources */,
 				CC2564291EC234B700EC1167 /* Frameworks */,
 				CC25642A1EC234B700EC1167 /* Resources */,
+				38CB0DC27A72811BEED4D49F /* [CP] Embed Pods Frameworks */,
+				8C6F543E1B2AE7FEDB69F7A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +198,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38CB0DC27A72811BEED4D49F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainbowWeather/Pods-RainbowWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81916EF95039F570511E8D2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8C6F543E1B2AE7FEDB69F7A2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainbowWeather/Pods-RainbowWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC2564281EC234B700EC1167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC2564321EC234B800EC1167 /* ViewController.swift in Sources */,
+				CC2564321EC234B800EC1167 /* MainViewController.swift in Sources */,
 				CC2564301EC234B800EC1167 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +373,7 @@
 		};
 		CC25643F1EC234B800EC1167 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C1A23DC05E6C82B4C80CF8F /* Pods-RainbowWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RainbowWeather/Info.plist;
@@ -270,6 +386,7 @@
 		};
 		CC2564401EC234B800EC1167 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E10FE0749A6DD1E65229FD5 /* Pods-RainbowWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RainbowWeather/Info.plist;
