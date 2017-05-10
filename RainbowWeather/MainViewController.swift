@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
 
     // outlets
     @IBOutlet weak var MainDateLabel: UILabel!
@@ -19,6 +20,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var MainWeatherLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation!
     var weatherObject: Weather!
     var forecastObject: Forecast!
     var forecastArray = [Forecast]()
@@ -38,13 +41,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    // table view delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastArray.count
+        return forecastArray.count-1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell {
-            let forecast = forecastArray[indexPath.row]
+            let forecast = forecastArray[indexPath.row+1]
             cell.configCell(forecast: forecast)
             return cell
         } else {
@@ -56,26 +60,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 100
     }
     
+    // download weather forcast and store in array
     func downloadForecast(completed: @escaping DownloadComplete) {
-        print("called download forecast")
+        print("called download forecast: \(FORECAST_WEATHER_URL)")
         let forecastURL = URL(string: FORECAST_WEATHER_URL)
         Alamofire.request(forecastURL!).responseJSON { response in
             let result = response.result
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
-                print("resultDict\(resultDict)")
                 if let weatherList = resultDict["list"] as? [Dictionary<String, AnyObject>] {
-                    print("and again")
                     for object in weatherList {
-                        print(object)
                         let forecast = Forecast(weatherDictionary: object)
                         self.forecastArray.append(forecast)
                     }
+                    self.tableView.reloadData()
                 }
             }
             completed()
         }
     }
 
+    // update the labels with the data downloaded
     func updateUIWithWeather() {
         MainWeatherLabel.text = weatherObject._weatherType
         MainDateLabel.text = "Today \(weatherObject.date)"

@@ -43,6 +43,29 @@ class Forecast {
         return _lowTemp
     }
     
+    func getDayOfWeel(dateParam: Date) -> String? {
+        var dayString: String!
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: dateParam)
+        print("get day function = \(weekDay)")
+        if weekDay == 1 {
+            dayString = "Monday"
+        } else if weekDay == 2 {
+            dayString = "Tuesday"
+        } else if weekDay == 3 {
+            dayString = "Wednesday"
+        } else if weekDay == 4 {
+            dayString = "Thursday"
+        } else if weekDay == 5 {
+            dayString = "Friday"
+        } else if weekDay == 6 {
+            dayString = "Saturday"
+        } else if weekDay == 7 {
+            dayString = "Sunday"
+        }
+        return dayString
+    }
+
     init(weatherDictionary: Dictionary<String, AnyObject>) {
         
         if let temp = weatherDictionary["temp"] as? Dictionary<String, AnyObject> {
@@ -67,17 +90,11 @@ class Forecast {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .full
             dateFormatter.dateFormat = "EEEE"
-            self._date = convertedDate.dayOfTheWeek()
+            self._date = getDayOfWeel(dateParam: convertedDate)
         }
         
     }
     
 }
 
-extension Date {
-    func dayOfTheWeek() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        return dateFormatter.string(from: self)
-    }
-}
+
