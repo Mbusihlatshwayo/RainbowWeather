@@ -18,15 +18,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var MainWeatherLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var weather = Weather()
+    var weatherObject: Weather!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         print("Downloading from:\(WEATHER_URL)")
-        weather.downloadWeather {
+        weatherObject = Weather()
+        weatherObject.downloadWeather {
             // update UI
+            self.updateUIWithWeather()
         }
         
     }
@@ -44,6 +46,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 100
     }
 
+    func updateUIWithWeather() {
+        MainWeatherLabel.text = weatherObject._weatherType
+        MainDateLabel.text = weatherObject._date
+        MainTempLabel.text = "\(weatherObject._currentTemp)"
+        MainLocLabel.text = weatherObject.cityName
+        MainWeatherImage.image = UIImage(named: weatherObject.weatherType)
+        
+    }
 
 }
 

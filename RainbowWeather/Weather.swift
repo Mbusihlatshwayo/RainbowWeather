@@ -49,16 +49,38 @@ class Weather {
         return _currentTemp
     }
     
-    func downloadWeather(completed: DownloadComplete) {
+    func downloadWeather(completed: @escaping DownloadComplete) {
         // download from api using alamofire
         let currentWeatherURL = URL(string: WEATHER_URL)
         
         // create request
         Alamofire.request(currentWeatherURL!).responseJSON { response in
             let result = response.result
-            print("ResultJSON\(response)")
+            // create the dictionary from the JSON response
+            if let resultDict = result.value as? Dictionary<String, AnyObject> {
+                if let name = resultDict["name"] as? String {
+                    self._cityName = name.capitalized // City name is always capital
+                    print(self._cityName)
+                }
+                
+                if let JSONWeatherType = resultDict["weather"] as? [Dictionary<String,AnyObject>] {
+                    if let type = JSONWeatherType[0]["main"] as? String {
+                        self._weatherType = type.capitalized
+                        print(self._weatherType)
+                    }
+                }
+                
+                if let main = resultDict["main"] as? Dictionary<String,AnyObject> {
+                    if let currentTemperature = main["temp"] as? Double {
+                        let farenheightTemp = 1.8 * (currentTemperature - 273) + 32;
+                        self._currentTemp = farenheightTemp
+                        print(self._currentTemp)
+                    }
+                }
+            }
+            completed()
         }
-        completed()
+        
 
     }
 
