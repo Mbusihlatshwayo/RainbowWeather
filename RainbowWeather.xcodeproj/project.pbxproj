@@ -13,6 +13,7 @@
 		CC2564351EC234B800EC1167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2564331EC234B800EC1167 /* Main.storyboard */; };
 		CC2564371EC234B800EC1167 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2564361EC234B800EC1167 /* Assets.xcassets */; };
 		CC25643A1EC234B800EC1167 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2564381EC234B800EC1167 /* LaunchScreen.storyboard */; };
+		CCCADB9B1EC2A4FA0047E307 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCADB9A1EC2A4FA0047E307 /* Weather.swift */; };
 		CCEE78AD1EC27E01000EBB78 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE78AC1EC27E01000EBB78 /* constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		CC2564361EC234B800EC1167 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC2564391EC234B800EC1167 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC25643B1EC234B800EC1167 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCCADB9A1EC2A4FA0047E307 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CCEE78AC1EC27E01000EBB78 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		CC2564431EC2355F00EC1167 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CCCADB9A1EC2A4FA0047E307 /* Weather.swift */,
 				CCEE78AC1EC27E01000EBB78 /* constants.swift */,
 			);
 			name = Model;
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCADB9B1EC2A4FA0047E307 /* Weather.swift in Sources */,
 				CC2564321EC234B800EC1167 /* MainViewController.swift in Sources */,
 				CC2564301EC234B800EC1167 /* AppDelegate.swift in Sources */,
 				CCEE78AD1EC27E01000EBB78 /* constants.swift in Sources */,

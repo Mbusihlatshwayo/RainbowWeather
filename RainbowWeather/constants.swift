@@ -13,5 +13,5 @@ let LATITUDE = "lat="
 let LONGITUDE = "&lon="
 let APP_ID = "&appid="
 let MY_API_KEY = "615615de6ee7edd99b2c5e25110fc424"
-
-let WEATHER_URL = "\(BASE_URL)\(LATITUDE)\(LONGITUDE)\(APP_ID)\(MY_API_KEY)"
+let WEATHER_URL = "\(BASE_URL)\(LATITUDE)-25\(LONGITUDE)134\(APP_ID)\(MY_API_KEY)"
+typealias DownloadComplete = () -> () // declare that we are done downloading

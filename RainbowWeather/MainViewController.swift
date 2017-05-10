@@ -18,12 +18,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var MainWeatherLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var weather = Weather()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        print(WEATHER_URL)
+        print("Downloading from:\(WEATHER_URL)")
+        weather.downloadWeather {
+            // update UI
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
