@@ -47,7 +47,6 @@ class Forecast {
         var dayString: String!
         let myCalendar = Calendar(identifier: .gregorian)
         let weekDay = myCalendar.component(.weekday, from: dateParam)
-        print("get day function = \(weekDay)")
         if weekDay == 1 {
             dayString = "Monday"
         } else if weekDay == 2 {

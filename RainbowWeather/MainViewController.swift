@@ -28,9 +28,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
+        locationManager.requestWhenInUseAuthorization() // only want location when looking for weather
+        locationManager.startMonitoringSignificantLocationChanges()
+        
         tableView.delegate = self
         tableView.dataSource = self
-        print("Downloading from:\(WEATHER_URL)")
+        
+        locationAuthorizationStatus()
         weatherObject = Weather()
         weatherObject.downloadWeather {
             self.downloadForecast {
@@ -41,14 +48,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        locationAuthorizationStatus()
+    }
+    
     // table view delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastArray.count-1
+        return forecastArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell {
-            let forecast = forecastArray[indexPath.row+1]
+            let forecast = forecastArray[indexPath.row]
             cell.configCell(forecast: forecast)
             return cell
         } else {
@@ -62,8 +74,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // download weather forcast and store in array
     func downloadForecast(completed: @escaping DownloadComplete) {
-        print("called download forecast: \(FORECAST_WEATHER_URL)")
-        let forecastURL = URL(string: FORECAST_WEATHER_URL)
+        print("called download forecast: \(FORECAST_URL)")
+        let forecastURL = URL(string: FORECAST_URL)
         Alamofire.request(forecastURL!).responseJSON { response in
             let result = response.result
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
@@ -79,11 +91,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
+    // request location authorization
+    func locationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            currentLocation = locationManager.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+            locationAuthorizationStatus()
+        }
+    }
     // update the labels with the data downloaded
     func updateUIWithWeather() {
         MainWeatherLabel.text = weatherObject._weatherType
         MainDateLabel.text = "Today \(weatherObject.date)"
-        MainTempLabel.text = "\(weatherObject._currentTemp!)°"
+        MainTempLabel.text = "\(weatherObject.currentTemp)°"
         MainLocLabel.text = weatherObject.cityName
         MainWeatherImage.image = UIImage(named: weatherObject.weatherType)
         

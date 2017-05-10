@@ -8,14 +8,7 @@
 
 import Foundation
 
-let BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-let LATITUDE = "lat="
-let LONGITUDE = "&lon="
-let APP_ID = "&appid="
-let COUNT = "&cnt=10"
-let MY_API_KEY = "615615de6ee7edd99b2c5e25110fc424"
-let WEATHER_URL = "\(BASE_URL)\(LATITUDE)-25\(LONGITUDE)134\(APP_ID)\(MY_API_KEY)"
-let BASE_FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?"
-//let FORECAST_WEATHER_URL = "\(BASE_FORECAST_URL)\(LATITUDE)-25\(LONGITUDE)134\(COUNT)\(APP_ID)615615de6ee7edd99b2c5e25110fc424"
-let FORECAST_WEATHER_URL = "\(BASE_FORECAST_URL)\(LATITUDE)-25\(LONGITUDE)134\(COUNT)\(APP_ID)\(MY_API_KEY)"
+let FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&cnt=10&mode=json&appid=615615de6ee7edd99b2c5e25110fc424"
+let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&appid=615615de6ee7edd99b2c5e25110fc424"
+
 typealias DownloadComplete = () -> ();
