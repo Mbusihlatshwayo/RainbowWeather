@@ -45,6 +45,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
 
     func updateUIWithWeather() {
         MainWeatherLabel.text = weatherObject._weatherType

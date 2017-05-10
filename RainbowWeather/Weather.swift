@@ -24,6 +24,7 @@ class Weather {
     
     var date: String {
         if _date == nil {
+            print("in initializer")
             _date = "No date found"
         }
         let dateFormatter = DateFormatter()
@@ -50,6 +51,15 @@ class Weather {
         return _currentTemp
     }
     
+    init() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        
+        let currentDate = dateFormatter.string(from: Date())
+        self._date = currentDate
+    }
+    
     func downloadWeather(completed: @escaping DownloadComplete) {
         // download from api using alamofire
         let currentWeatherURL = URL(string: WEATHER_URL)
@@ -59,12 +69,12 @@ class Weather {
             let result = response.result
             // since we fail to ever actually initialize the weather object via initialiazer 
             // do it explicitly here
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            
-            let currentDate = dateFormatter.string(from: Date())
-            self._date = currentDate
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateStyle = .long
+//            dateFormatter.timeStyle = .none
+//            
+//            let currentDate = dateFormatter.string(from: Date())
+//            self._date = currentDate
             // create the dictionary from the JSON response
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
                 if let name = resultDict["name"] as? String {
