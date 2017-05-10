@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -19,6 +20,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var weatherObject: Weather!
+    var forecastObject: Forecast!
+    var forecastArray = [Forecast]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +30,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("Downloading from:\(WEATHER_URL)")
         weatherObject = Weather()
         weatherObject.downloadWeather {
-            // update UI
-            self.updateUIWithWeather()
+            self.downloadForecast {
+                self.updateUIWithWeather()
+            }
+            
         }
         
     }
@@ -46,10 +51,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 100
     }
     
+    func downloadForecast(completed: @escaping DownloadComplete) {
+        let forecastURL = URL(string: FORECAST_WEATHER_URL)
+        Alamofire.request(forecastURL!).responseJSON { response in
+            let result = response.result
+            if let resultDict = result.value as? Dictionary<String, AnyObject> {
+                if let weatherList = resultDict["list"] as? [Dictionary<String, AnyObject>] {
+                    for object in weatherList {
+                        let forecast = Forecast(weatherDictionary: object)
+                        self.forecastArray.append(forecast)
+                    }
+                }
+            }
+            completed()
+        }
+    }
 
     func updateUIWithWeather() {
         MainWeatherLabel.text = weatherObject._weatherType
-        MainDateLabel.text = "Today \(weatherObject._date!)"
+        MainDateLabel.text = "Today \(weatherObject.date)"
         MainTempLabel.text = "\(weatherObject._currentTemp!)°"
         MainLocLabel.text = weatherObject.cityName
         MainWeatherImage.image = UIImage(named: weatherObject.weatherType)

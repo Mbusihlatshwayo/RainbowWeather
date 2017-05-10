@@ -24,7 +24,6 @@ class Weather {
     
     var date: String {
         if _date == nil {
-            print("in initializer")
             _date = "No date found"
         }
         let dateFormatter = DateFormatter()
@@ -49,15 +48,6 @@ class Weather {
             _currentTemp = 0.0
         }
         return _currentTemp
-    }
-    
-    init() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
-        
-        let currentDate = dateFormatter.string(from: Date())
-        self._date = currentDate
     }
     
     func downloadWeather(completed: @escaping DownloadComplete) {
