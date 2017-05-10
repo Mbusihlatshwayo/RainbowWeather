@@ -67,15 +67,6 @@ class Weather {
         // create request
         Alamofire.request(currentWeatherURL!).responseJSON { response in
             let result = response.result
-            // since we fail to ever actually initialize the weather object via initialiazer 
-            // do it explicitly here
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateStyle = .long
-//            dateFormatter.timeStyle = .none
-//            
-//            let currentDate = dateFormatter.string(from: Date())
-//            self._date = currentDate
-            // create the dictionary from the JSON response
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
                 if let name = resultDict["name"] as? String {
                     self._cityName = name.capitalized // City name is always capital
@@ -85,7 +76,6 @@ class Weather {
                 if let JSONWeatherType = resultDict["weather"] as? [Dictionary<String,AnyObject>] {
                     if let type = JSONWeatherType[0]["main"] as? String {
                         self._weatherType = type.capitalized
-                        print(self._weatherType)
                     }
                 }
                 
