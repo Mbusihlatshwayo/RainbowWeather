@@ -88,7 +88,7 @@
                                 <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="100" id="Zlp-02-4WL">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="100" id="Zlp-02-4WL" customClass="WeatherTableViewCell" customModule="RainbowWeather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zlp-02-4WL" id="x0u-bG-Lg1">
@@ -174,6 +174,13 @@
                                                 <constraint firstItem="HR4-s1-UuP" firstAttribute="top" secondItem="3y7-4A-jUB" secondAttribute="top" id="zv6-if-BE4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dayLabel" destination="GXJ-eS-wIb" id="fy2-L3-l6m"/>
+                                            <outlet property="highTempLabel" destination="2qg-J1-e1z" id="deF-ar-Ubp"/>
+                                            <outlet property="imageCellView" destination="HR4-s1-UuP" id="HUT-jx-PYa"/>
+                                            <outlet property="lowTempLabel" destination="sqg-cr-oqN" id="lav-on-rJe"/>
+                                            <outlet property="typeLabel" destination="lPM-CY-4Vj" id="de8-bE-uad"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -39,12 +39,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1000
+        return forecastArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell {
+            let forecast = forecastArray[indexPath.row]
+            cell.configCell(forecast: forecast)
+            return cell
+        } else {
+            return WeatherTableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -52,12 +57,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func downloadForecast(completed: @escaping DownloadComplete) {
+        print("called download forecast")
         let forecastURL = URL(string: FORECAST_WEATHER_URL)
         Alamofire.request(forecastURL!).responseJSON { response in
             let result = response.result
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
+                print("resultDict\(resultDict)")
                 if let weatherList = resultDict["list"] as? [Dictionary<String, AnyObject>] {
+                    print("and again")
                     for object in weatherList {
+                        print(object)
                         let forecast = Forecast(weatherDictionary: object)
                         self.forecastArray.append(forecast)
                     }

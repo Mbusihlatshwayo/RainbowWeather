@@ -10,6 +10,7 @@
 		136062904FB7643FD4388427 /* Pods_RainbowWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE7BBE6A00E254CBA13A9DD /* Pods_RainbowWeather.framework */; };
 		CC1259FD1EC37F7200C6ECCF /* Forcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1259FC1EC37F7200C6ECCF /* Forcast.swift */; };
 		CC125A011EC392ED00C6ECCF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC125A001EC392ED00C6ECCF /* Constants.swift */; };
+		CC125A031EC3938700C6ECCF /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC125A021EC3938700C6ECCF /* WeatherTableViewCell.swift */; };
 		CC2564301EC234B800EC1167 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC25642F1EC234B800EC1167 /* AppDelegate.swift */; };
 		CC2564321EC234B800EC1167 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2564311EC234B800EC1167 /* MainViewController.swift */; };
 		CC2564351EC234B800EC1167 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2564331EC234B800EC1167 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		5C1A23DC05E6C82B4C80CF8F /* Pods-RainbowWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainbowWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RainbowWeather/Pods-RainbowWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1259FC1EC37F7200C6ECCF /* Forcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forcast.swift; sourceTree = "<group>"; };
 		CC125A001EC392ED00C6ECCF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CC125A021EC3938700C6ECCF /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		CC25642C1EC234B800EC1167 /* RainbowWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainbowWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC25642F1EC234B800EC1167 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC2564311EC234B800EC1167 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				CC2564311EC234B800EC1167 /* MainViewController.swift */,
 				CC25642F1EC234B800EC1167 /* AppDelegate.swift */,
+				CC125A021EC3938700C6ECCF /* WeatherTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC125A031EC3938700C6ECCF /* WeatherTableViewCell.swift in Sources */,
 				CC125A011EC392ED00C6ECCF /* Constants.swift in Sources */,
 				CCCADB9B1EC2A4FA0047E307 /* Weather.swift in Sources */,
 				CC1259FD1EC37F7200C6ECCF /* Forcast.swift in Sources */,
