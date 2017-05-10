@@ -12,7 +12,7 @@ import Alamofire
 class Weather {
     var _cityName: String!
     var _date: String!
-    var _weatherType: String! // sunny cloudy
+    var _weatherType: String! // sunny, cloudy, overcast...
     var _currentTemp: Double!
     
     var cityName: String {
@@ -31,7 +31,8 @@ class Weather {
         dateFormatter.timeStyle = .none
         
         let currentDate = dateFormatter.string(from: Date())
-        self._date = "Today: \(currentDate)"
+        self._date = currentDate
+        print("date initialization: \(currentDate)")
         return _date
     }
     
@@ -56,6 +57,14 @@ class Weather {
         // create request
         Alamofire.request(currentWeatherURL!).responseJSON { response in
             let result = response.result
+            // since we fail to ever actually initialize the weather object via initialiazer 
+            // do it explicitly here
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .none
+            
+            let currentDate = dateFormatter.string(from: Date())
+            self._date = currentDate
             // create the dictionary from the JSON response
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
                 if let name = resultDict["name"] as? String {
