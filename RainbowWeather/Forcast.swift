@@ -70,11 +70,11 @@ class Forecast {
         if let temp = weatherDictionary["temp"] as? Dictionary<String, AnyObject> {
             if let min = temp["min"] as? Double {
                 let minFarenheightTemp = 1.8 * (min - 273) + 32;
-                self._lowTemp = "\(minFarenheightTemp)"
+                self._lowTemp = "\(Int(minFarenheightTemp))"
             }
             if let max = temp["max"] as? Double {
                 let maxFarenheightTemp = 1.8 * (max - 273) + 32;
-                self._highTemp = "\(maxFarenheightTemp)"
+                self._highTemp = "\(Int(maxFarenheightTemp))"
             }
         }
         

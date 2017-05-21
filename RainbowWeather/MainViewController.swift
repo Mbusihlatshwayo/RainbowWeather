@@ -82,19 +82,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    // request location authorization
-//    func locationAuthorizationStatus() {
-//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-//            currentLocation = locationManager.location
-//            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-//            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-//            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
-//        } else {
-//            locationManager.requestWhenInUseAuthorization()
-//            locationAuthorizationStatus()
-//        }
-//    }
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             currentLocation = locationManager.location
@@ -110,7 +97,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         } else {
             locationManager.requestWhenInUseAuthorization()
-//            locationAuthorizationStatus()
         }
     }
     // update the labels with the data downloaded
