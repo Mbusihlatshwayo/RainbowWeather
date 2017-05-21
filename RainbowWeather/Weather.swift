@@ -13,7 +13,7 @@ class Weather {
     var _cityName: String!
     var _date: String!
     var _weatherType: String! // sunny, cloudy, overcast...
-    var _currentTemp: Double!
+    var _currentTemp: Int!
     
     var cityName: String {
         if _cityName == nil {
@@ -43,9 +43,9 @@ class Weather {
         return _weatherType
     }
     
-    var currentTemp: Double {
+    var currentTemp: Int {
         if _currentTemp == nil {
-            _currentTemp = 0.0
+            _currentTemp = 0
         }
         return _currentTemp
     }
@@ -71,7 +71,7 @@ class Weather {
                 
                 if let main = resultDict["main"] as? Dictionary<String,AnyObject> {
                     if let currentTemperature = main["temp"] as? Double {
-                        let farenheightTemp = 1.8 * (currentTemperature - 273) + 32;
+                        let farenheightTemp = Int(1.8 * (currentTemperature - 273) + 32)
                         self._currentTemp = farenheightTemp
                         print(self._currentTemp)
                     }

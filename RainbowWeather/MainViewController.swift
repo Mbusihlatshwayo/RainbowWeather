@@ -36,21 +36,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        locationAuthorizationStatus()
         weatherObject = Weather()
-        weatherObject.downloadWeather {
-            self.downloadForecast {
-                self.updateUIWithWeather()
-            }
-            
-        }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        locationAuthorizationStatus()
     }
     
     // table view delegate methods
@@ -92,15 +83,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     // request location authorization
-    func locationAuthorizationStatus() {
+//    func locationAuthorizationStatus() {
+//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+//            currentLocation = locationManager.location
+//            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+//            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+//            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+//        } else {
+//            locationManager.requestWhenInUseAuthorization()
+//            locationAuthorizationStatus()
+//        }
+//    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             currentLocation = locationManager.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
             print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+            weatherObject.downloadWeather {
+                self.downloadForecast {
+                    self.updateUIWithWeather()
+                }
+                
+            }
+
         } else {
             locationManager.requestWhenInUseAuthorization()
-            locationAuthorizationStatus()
+//            locationAuthorizationStatus()
         }
     }
     // update the labels with the data downloaded
