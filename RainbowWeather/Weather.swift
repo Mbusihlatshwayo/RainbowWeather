@@ -56,6 +56,7 @@ class Weather {
         
         // create request
         Alamofire.request(currentWeatherURL!).responseJSON { response in
+            print("weather URL = \(currentWeatherURL!)")
             let result = response.result
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
                 if let name = resultDict["name"] as? String {

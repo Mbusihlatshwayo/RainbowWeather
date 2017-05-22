@@ -178,7 +178,7 @@
 				TargetAttributes = {
 					CC25642B1EC234B700EC1167 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2K273P6V79;
+						DevelopmentTeam = CM33HK3T4N;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -397,10 +397,10 @@
 			baseConfigurationReference = 5C1A23DC05E6C82B4C80CF8F /* Pods-RainbowWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2K273P6V79;
+				DEVELOPMENT_TEAM = CM33HK3T4N;
 				INFOPLIST_FILE = RainbowWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowapps.RainbowWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pca.RainbowWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -411,10 +411,10 @@
 			baseConfigurationReference = 0E10FE0749A6DD1E65229FD5 /* Pods-RainbowWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2K273P6V79;
+				DEVELOPMENT_TEAM = CM33HK3T4N;
 				INFOPLIST_FILE = RainbowWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rainbowapps.RainbowWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pca.RainbowWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

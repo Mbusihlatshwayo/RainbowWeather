@@ -43,36 +43,36 @@ class Forecast {
         return _lowTemp
     }
     
-    func getDayOfWeel(dateParam: Date) -> String? {
-        var dayString: String!
-        let myCalendar = Calendar(identifier: .gregorian)
-        let weekDay = myCalendar.component(.weekday, from: dateParam)
-        if weekDay == 1 {
-            dayString = "Monday"
-        } else if weekDay == 2 {
-            dayString = "Tuesday"
-        } else if weekDay == 3 {
-            dayString = "Wednesday"
-        } else if weekDay == 4 {
-            dayString = "Thursday"
-        } else if weekDay == 5 {
-            dayString = "Friday"
-        } else if weekDay == 6 {
-            dayString = "Saturday"
-        } else if weekDay == 7 {
-            dayString = "Sunday"
+    func getDayOfWeek(dayInt: Int) -> String? {
+        switch dayInt {
+        case 1:
+            return "Sunday"
+        case 2:
+            return "Monday"
+        case 3:
+            return "Tuesday"
+        case 4:
+            return "Wednesday"
+        case 5:
+            return "Thursday"
+        case 6:
+            return "Friday"
+        case 7:
+            return "Saturday"
+        default:
+            return "Monday"
         }
-        return dayString
     }
 
     init(weatherDictionary: Dictionary<String, AnyObject>) {
-        
+//        print("init with \(weatherDictionary)")
         if let temp = weatherDictionary["temp"] as? Dictionary<String, AnyObject> {
             if let min = temp["min"] as? Double {
                 let minFarenheightTemp = 1.8 * (min - 273) + 32;
                 self._lowTemp = "\(Int(minFarenheightTemp))"
             }
             if let max = temp["max"] as? Double {
+//                print("MAXXX: \(max)")
                 let maxFarenheightTemp = 1.8 * (max - 273) + 32;
                 self._highTemp = "\(Int(maxFarenheightTemp))"
             }
@@ -89,7 +89,8 @@ class Forecast {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .full
             dateFormatter.dateFormat = "EEEE"
-            self._date = getDayOfWeel(dateParam: convertedDate)
+            let weekday = Calendar.current.component(.weekday, from: convertedDate)
+            self._date = getDayOfWeek(dayInt: weekday)
         }
         
     }

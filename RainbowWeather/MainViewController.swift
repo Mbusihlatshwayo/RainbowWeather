@@ -46,12 +46,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // table view delegate methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecastArray.count
+        return forecastArray.count-1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell {
-            let forecast = forecastArray[indexPath.row]
+            let forecast = forecastArray[indexPath.row+1]
+            print(forecast._date)
             cell.configCell(forecast: forecast)
             return cell
         } else {
