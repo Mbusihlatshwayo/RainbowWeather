@@ -29,6 +29,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        MainWeatherLabel.adjustsFontSizeToFitWidth = true
+        MainWeatherLabel.minimumScaleFactor = 0.2
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
         locationManager.requestWhenInUseAuthorization() // only want location when looking for weather
