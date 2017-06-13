@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RainbowWeather/MainViewController.swift"
-            timestampString = "518404456.279432"
+            timestampString = "519016774.469442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -40,7 +40,7 @@
                   moduleName = "RainbowWeather"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/RainbowWeather/RainbowWeather/Constants.swift"
-                  timestampString = "518729047.397288"
+                  timestampString = "519016623.96566"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -55,7 +55,7 @@
                   moduleName = "RainbowWeather"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/RainbowWeather/RainbowWeather/Constants.swift"
-                  timestampString = "518729047.399087"
+                  timestampString = "519016623.969762"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -72,12 +72,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RainbowWeather/MainViewController.swift"
-            timestampString = "518405008.166363"
+            timestampString = "519016774.469442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "downloadForecast(completed:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RainbowWeather/MainViewController.swift"
+            timestampString = "519016774.469442"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -43,6 +43,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print("viewWillAppear")
+//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+//            currentLocation = locationManager.location
+//            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+//            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+//            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+//            weatherObject.downloadWeather {
+//                self.downloadForecast {
+//                    self.updateUIWithWeather()
+//                }
+//                
+//            }
+//        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
