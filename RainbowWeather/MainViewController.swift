@@ -37,6 +37,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
+
         weatherObject = Weather()
         
         NotificationCenter.default.addObserver(self, selector:#selector(MainViewController.reloadWeather), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
@@ -45,7 +46,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func reloadWeather() {
         shouldLoadWeather = true
-        print("STATUS: \(CLLocationManager.authorizationStatus()) ")
         let status = CLLocationManager.authorizationStatus()
         if status == .denied || status == .restricted || status == .notDetermined {
             askForLocationServices()
@@ -70,8 +70,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        print("viewWillAppear")
+
         shouldLoadWeather = true
         
     }
@@ -88,7 +87,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell {
             let forecast = forecastArray[indexPath.row+1]
-            print(forecast._date)
             cell.configCell(forecast: forecast)
             return cell
         } else {
@@ -103,8 +101,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // download weather forcast and store in array
     func downloadForecast(completed: @escaping DownloadComplete) {
         
-        print("called download forecast: \(FORECAST_URL)")
-        let forecastURL = URL(string: FORECAST_URL)
+        var forecast = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(Location.sharedInstance.latitude!)&lon=\(Location.sharedInstance.longitude!)&cnt=10&mode=json&appid=615615de6ee7edd99b2c5e25110fc424"
+        let forecastURL = URL(string: forecast)
         Alamofire.request(forecastURL!).responseJSON { response in
             let result = response.result
             if let resultDict = result.value as? Dictionary<String, AnyObject> {
@@ -123,31 +121,27 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if shouldLoadWeather {
             forecastArray.removeAll() // clear array before populating with more weather data
-            currentLocation = locationManager.location
+            currentLocation = manager.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
-            weatherObject.downloadWeather {
-                self.downloadForecast {
+            self.downloadForecast {
+                self.weatherObject.downloadWeather {
                     self.updateUIWithWeather()
                 }
-                
             }
         }
         shouldLoadWeather = false
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            print("LOCATION AUTHORIZED")
 
         } else {
             locationManager.requestWhenInUseAuthorization()
-            print("LOCATION NOT AUTHORIZED")
         }
     }
     // update the labels with the data downloaded
     func updateUIWithWeather() {
-        MainWeatherLabel.text = weatherObject._weatherType
+        MainWeatherLabel.text = weatherObject.weatherType
         MainDateLabel.text = "Today \(weatherObject.date)"
         MainTempLabel.text = "\(weatherObject.currentTemp)°"
         MainLocLabel.text = weatherObject.cityName

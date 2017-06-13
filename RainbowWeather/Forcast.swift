@@ -72,7 +72,6 @@ class Forecast {
                 self._lowTemp = "\(Int(minFarenheightTemp))"
             }
             if let max = temp["max"] as? Double {
-//                print("MAXXX: \(max)")
                 let maxFarenheightTemp = 1.8 * (max - 273) + 32;
                 self._highTemp = "\(Int(maxFarenheightTemp))"
             }

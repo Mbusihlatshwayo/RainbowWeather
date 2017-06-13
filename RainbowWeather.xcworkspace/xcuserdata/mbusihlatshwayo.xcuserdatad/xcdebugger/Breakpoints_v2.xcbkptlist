@@ -6,47 +6,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RainbowWeather/Constants.swift"
-            timestampString = "518404548.919063"
+            filePath = "RainbowWeather/MainViewController.swift"
+            timestampString = "519033965.503245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "globalinit_33_DFC5BCF0308697B54EEE32AAE3DDD54E_func0"
-                  moduleName = "RainbowWeather"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/RainbowWeather/RainbowWeather/Constants.swift"
-                  timestampString = "519017931.357189"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RainbowWeather.FORECAST_URL.unsafeMutableAddressor : Swift.String"
-                  moduleName = "RainbowWeather"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/RainbowWeather/RainbowWeather/Constants.swift"
-                  timestampString = "519017931.358922"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "updateUIWithWeather()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RainbowWeather/Weather.swift"
+            timestampString = "519033274.513199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "downloadWeather(completed:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -56,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RainbowWeather/MainViewController.swift"
-            timestampString = "519019056.363357"
+            timestampString = "519033965.503245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
