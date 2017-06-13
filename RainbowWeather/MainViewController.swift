@@ -25,6 +25,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var weatherObject: Weather!
     var forecastObject: Forecast!
     var forecastArray = [Forecast]()
+    var shouldLoadWeather = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,32 +33,47 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         MainWeatherLabel.adjustsFontSizeToFitWidth = true
         MainWeatherLabel.minimumScaleFactor = 0.2
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
-        locationManager.requestWhenInUseAuthorization() // only want location when looking for weather
-        locationManager.startMonitoringSignificantLocationChanges()
+        initLocationManager()
         
         tableView.delegate = self
         tableView.dataSource = self
         weatherObject = Weather()
         
+        NotificationCenter.default.addObserver(self, selector:#selector(MainViewController.reloadWeather), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+    }
+    
+    func reloadWeather() {
+        shouldLoadWeather = true
+        print("STATUS: \(CLLocationManager.authorizationStatus()) ")
+        let status = CLLocationManager.authorizationStatus()
+        if status == .denied || status == .restricted || status == .notDetermined {
+            askForLocationServices()
+        }
+        
+    }
+    
+    func askForLocationServices() {
+        let alertController = UIAlertController(title: "Sorry", message: "Please enable location services for weather data.", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    func initLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
+        locationManager.requestWhenInUseAuthorization() // only want location when looking for weather
+        locationManager.startUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         print("viewWillAppear")
-//        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-//            currentLocation = locationManager.location
-//            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-//            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-//            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
-//            weatherObject.downloadWeather {
-//                self.downloadForecast {
-//                    self.updateUIWithWeather()
-//                }
-//                
-//            }
-//        }
+        shouldLoadWeather = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +102,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // download weather forcast and store in array
     func downloadForecast(completed: @escaping DownloadComplete) {
+        
         print("called download forecast: \(FORECAST_URL)")
         let forecastURL = URL(string: FORECAST_URL)
         Alamofire.request(forecastURL!).responseJSON { response in
@@ -103,8 +120,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if shouldLoadWeather {
+            forecastArray.removeAll() // clear array before populating with more weather data
             currentLocation = locationManager.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
@@ -115,9 +133,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 
             }
+        }
+        shouldLoadWeather = false
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            print("LOCATION AUTHORIZED")
 
         } else {
             locationManager.requestWhenInUseAuthorization()
+            print("LOCATION NOT AUTHORIZED")
         }
     }
     // update the labels with the data downloaded
